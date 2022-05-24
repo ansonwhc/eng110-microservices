@@ -32,14 +32,14 @@ The reference guide for `Dockerfile`: https://docs.docker.com/engine/reference/b
 For example:
 
     $ nano Dockerfile
-    >>> FROM <base_image>
-    >>> LABEL <key>=<value> (optional)
-    >>> WORKDIR /<path>/<to>/<default directory>
-    >>> COPY <source> <destination>
-    >>> ADD <source> <destination>
-    >>> RUN <command>
-    >>> EXPOSE <port>
-    >>> CMD [<package>, <application>]
+    > FROM <base_image>
+    > LABEL <key>=<value> (optional)
+    > WORKDIR /<path>/<to>/<default directory>
+    > COPY <source> <destination>
+    > ADD <source> <destination>
+    > RUN <command>
+    > EXPOSE <port>
+    > CMD [<package>, <application>]
 
     $ docker build -t <user_name>/<repo>:<tags> .`
 
@@ -50,4 +50,27 @@ Official example on building an image for node.js: https://docs.docker.com/langu
 For example:  
 
     $ nano .dockerignore
-    >>> node_modules
+    > node_modules
+
+## Production
+Once the microservice is running as purposed in a development environment, we can use more lightweight base image to put our application onto. This reduces the size of the image and thus more suitable for production.
+
+For example
+
+    $ nano Dockerfile
+
+    > FROM node as app   # name our application as app
+    > RUN ...
+    > CMD ...
+
+    # make the app available in a production environment
+    > FROM node:alpine
+    > RUN ...
+    > COPY --from=app /<path>/<to>/<app> /<path>/<to>/<app>
+    > CMD ...
+
+    $ docker build -t <name>/<repo> .
+    # the production ready image is done
+
+    $ docker container commit <image id> <name>/<repo>:prod-ready
+    $ docker push <name>/<repo>:prod-ready
