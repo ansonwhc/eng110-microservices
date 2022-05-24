@@ -1,4 +1,4 @@
-# Micro services
+# Microservices
 Microservices are small applications that the development teams create independently.  
 
 The idea is to split application into a set of smaller, inter-connected services that are:
