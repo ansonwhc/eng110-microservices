@@ -7,7 +7,7 @@ The idea is to split application into a set of smaller, inter-connected services
 - Independently deployable
 - Organised
 
-Docker guide [here](docker-guide.md)
+Docker guide [here](docker-guide.md)  
 Kubernates guide [here](kubernates-guide.md)
 
 ## What is containerisation?
