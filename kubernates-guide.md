@@ -63,6 +63,6 @@ resource example:
 3. connect that service to the pods using selector and matchlabels
 
 ## Resources
-API: https://kubernetes.io/docs/reference/kubernetes-api/
+API: https://kubernetes.io/docs/reference/kubernetes-api/  
 Deployment: https://kubernetes.io/docs/concepts/cluster-administration/manage-deployment/
 
