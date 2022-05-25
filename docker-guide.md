@@ -1,8 +1,12 @@
 # Docker
 Docker is an open source containerization platform. It enables developers to package applications into containers—standardized executable components combining application source code with the operating system (OS) libraries and dependencies required to run that code in any environment.  
 
-Dockerfile guide [here](#dockerfile)
+Command guide - [here](#command-cheat-sheet)  
+Dockerfile guide - [here](#dockerfile)  
+Production guide - [here](#production)  
+Microservices guide - [here](#microservices)  
 
+## Command cheat sheet
 Command | Function | Options
 --- | --- | ---
 `docker ps` | current processes | [-a] show all
@@ -22,6 +26,8 @@ Command | Function | Options
 `docker login --username=<docker_username>` | login to docker
 `docker container commit <container ID> <user_name>/<repo>` | commit an image of a container 
 `docker push <user_name>/<repo>:<tag>` | push the image to DockerHub
+`docker-compose <compose.yml> up` | start containers using the "compose.yml" | [-d] detached mode
+`docker-compose <compose.yml> down` | stop containers started with the "compose.yml"
 
 ## Dockerfile
 Dockerfile is used for creating a new image from a base image. This new image can contain all the abtracted and encapsulated information required for our applications.
@@ -74,3 +80,31 @@ For example
 
     $ docker container commit <image id> <name>/<repo>:prod-ready
     $ docker push <name>/<repo>:prod-ready
+
+## Microservices
+We can utilise docker-compose to read a .yml file for instructions on how the containers should communicate with each other.
+
+For example, when we want to deploy an application and a database as two separate services, we can set up a stack.yml as shown [here](stack.yml) or below:  
+
+    $ nano stack.yml
+    > services:
+    
+    > mongodb:
+    >     image: mongo
+    >     restart: always
+    >     ports:
+    >     - "27017:27017"
+
+    > app:
+    >     image: app-image
+    >     restart: always
+    >     ports:
+    >     - "3000:3000"
+    >     links:
+    >     - mongodb
+
+    # to start
+    $ docker-compose -f stack.yml up -d
+
+    # to stop
+    $ docker-compose -f stack.yml down
