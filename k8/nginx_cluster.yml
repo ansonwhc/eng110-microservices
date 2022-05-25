@@ -1,0 +1,37 @@
+---
+# which version of APIs for deployment
+apiVersion: apps/v1  # required
+
+# pod, service, replicaset, ASG
+kind: Deployment  # required
+
+metadata:  # required
+  name: nginx-deployment
+
+spec:  # required
+  selector:
+    matchLabels:
+      app: nginx
+  replicas: 3  # tells deployment to run 3 pods matching the template
+  template:
+    metadata:
+      labels:
+        app: nginx
+    spec:
+      containers:
+      - name: nginx
+        image: ansonwhc/eng110-micro-services:v2
+        ports:
+        - containerPort: 80
+        imagePullPolicy: Always  # allow k8 to pull the image from hub if we don't have it locally
+        # resources:
+        #   limits:
+            # memory: 512Mi
+            # cpu: "1"
+          # requests:
+          #   memory: 256Mi
+          #   cpu: "0.2"
+          
+# run $ kubectl apply -f <file.yml>
+# run $ kubectl create -f <file.yml>
+

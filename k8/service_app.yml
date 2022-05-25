@@ -1,0 +1,46 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: node
+  namespace: default
+spec:
+  ports:
+  - nodePort: 30444  # 30000-302222
+    port: 3000
+    protocol: TCP
+    targetPort: 3000
+  selector:
+    app: node
+  type: NodePort
+---
+apiVersion: apps/v1
+
+kind: Deployment
+
+metadata:
+  name: node
+
+spec:
+  selector:
+    matchLabels:
+      app: node
+  replicas: 3 
+  template:
+    metadata:
+      labels:
+        app: node
+    spec:
+      containers:
+      - name: node
+        image: ansonwhc/eng110-micro-services:node-app
+        # command: ["node seeds/seed.js"]
+        ports:
+        - containerPort: 3000
+        env:
+          - name: DB_HOST
+            value: mongodb://mongo:27017/posts
+        imagePullPolicy: Always  # allow k8 to pull the image from hub if we don't have it locally
+        resources:
+          limits:
+            memory: 512Mi
+            cpu: "1"
