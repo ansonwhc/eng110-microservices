@@ -11,7 +11,9 @@ spec:
     targetPort: 3000
   selector:
     app: node
-  type: NodePort
+  # type: NodePort
+  type: LoadBalancer
+
 ---
 apiVersion: apps/v1
 
@@ -44,3 +46,6 @@ spec:
           limits:
             memory: 512Mi
             cpu: "1"
+          requests:
+            memory: 256Mi
+            cpu: "0.2"
