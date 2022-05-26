@@ -1,6 +1,8 @@
 # Kubernates
 K8 is a pilot that's responsible for the orchestration of containers.
 
+![](/imgs/Kubernetes-architecture-diagram-1-1.png)
+
 ## Summary
 kubernetes a tool for managing and automating containerized workloads in the cloud.  
 
