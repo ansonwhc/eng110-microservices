@@ -6,7 +6,7 @@ kubernetes a tool for managing and automating containerized workloads in the clo
 
 Imagine having an orchestra think of each individual musician as a docker container, to create beautiful music we need a conductor to manage the musicians and set the tempo.  
 
-Now imagine the conductor as kubernetes and the orchestra as an app like robinhood. When the markets are closed, an app like robinhood isn't doing much, but when they open it needs to fulfill millions of trades for overpriced stocks like tesla and shopify.  
+Now imagine the conductor as kubernetes and the orchestra as an app like robinhood. When the markets are closed, an app like robinhood isn't doing much, but when they open it needs to fulfill millions of trades.  
 
 K8 is the tool that orchestrates the infrastructure to handle the changing workload. It can scale containers across multiple machines and if one fails it knows how to replace it with a new one.  
 
@@ -31,12 +31,9 @@ Docker desktop > settings > kubernetes > enable kubernetes
 
 We can check installation by running `kubectl` in the terminal.
 
-## Architecture
-![arch](/imgs/Kubernetes-architecture-diagram-1-1.png)
+## Our Service Architecture
 
-cluster components:
-- service
-- namespace
+![](/imgs/Screenshot%202022-05-26%20094809.png)
 
 ## Command cheat sheet
 command | function | options
@@ -54,7 +51,8 @@ resource example:
 - `namespace`
 - `deploy`
 - `pods`
-- `replicaset`
+- `replicaset`  
+
 ![](/imgs/Screenshot%202022-05-25%20122835.png)
 
 ## Usage
