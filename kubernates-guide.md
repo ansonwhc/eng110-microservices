@@ -44,9 +44,9 @@ command | function | options
 `kubectl cluster-info` | show the information of the cluster
 `kubectl create -f <file.yml/dir>` | create services specified within the yaml file
 `kubectl get <resource> <name>` | show the summary of existing `resource` specified given `name`
-`kubectl delete <resource> <name>` | show the summary of existing `resource` specified given `name`
-`kubectl describe <resource> <name>` | show the summary of existing `resource` specified given `name`
-`kubectl edit <resource> <name>` | show the summary of existing `resource` specified given `name`
+`kubectl delete <resource> <name>` | delete the existing `resource` specified given `name`
+`kubectl describe <resource> <name>` | show the details of existing `resource` specified given `name`
+`kubectl edit <resource> <name>` | edit the details of existing `resource` specified given `name`
 
 resource example:
 - `service`
