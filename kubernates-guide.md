@@ -33,6 +33,62 @@ Docker desktop > settings > kubernetes > enable kubernetes
 
 We can check installation by running `kubectl` in the terminal.
 
+## Concepts
+### K8 Object Construction
+- **YAML file**
+    - We construct K8 objects by using yaml files
+    - There are 4 compulsary fields to every K8 yaml file
+    - K8 objects: https://kubernetes.io/docs/concepts/overview/working-with-objects/kubernetes-objects/
+    - API conventions: https://github.com/kubernetes/community/blob/master/contributors/devel/sig-architecture/api-conventions.md
+    - Docs: https://kubernetes.io/docs/reference/
+        - `apiVersion`
+            - version of K8 api are we using for this object 
+            - usable API's: `v1`, `app/v1`
+            - https://kubernetes.io/docs/concepts/overview/kubernetes-api/
+        - `kind`
+            - kind of object we are creating
+            - Example:
+                - Pod
+                - Deployment
+                - Service
+                - Node
+        - `metadata`
+            - information about the object we care about
+            - usable subfields: `name`, `namespace`, `labels`
+                - `name` is the name `(str)` of the object
+                - `namespace` provides a mechanism for isolating groups of resources within a single cluster
+                    - names of resources need to be unique within a namespace
+                    - https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
+                - `labels` is a dictionary of *customised* key and value pairs that we want to tag onto the object
+                    - Example
+
+                            app: MyApp  
+                            type: Python  
+                            env: Dev  
+        - `spec`
+            - details on the object that we are creating
+            - usable subfields: `containers`
+                - for `containers`, we can use subfields of `name`, `image`
+                - Example
+
+                        spec:
+                        containers:
+                            - name: nginx
+                            image: nginx
+
+    - Note
+        - multiple objects are individually specified in the subfields using `-` 
+
+
+
+### Pods
+- **Editing existing pods**
+    - If we are given a pod definition file, edit that file and use it to create a new pod.
+    - If we are not given a pod definition file, we may extract the definition to a file using the below command:
+        - ```kubectl get pod <pod-name> -o yaml > pod-definition.yaml```
+    - Then edit the file to make the necessary changes, delete and re-create the pod.
+        - `kubectl edit pod <pod-name>` to edit pod properties.
+
 ## Our Service Architecture
 
 ![](/imgs/Screenshot%202022-05-26%20094809.png)
@@ -51,7 +107,7 @@ command | function | options
 resource example:
 - `service`
 - `namespace`
-- `deploy`
+- `deployment`
 - `pods`
 - `replicaset`  
 
