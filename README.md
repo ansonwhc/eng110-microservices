@@ -27,7 +27,7 @@ Docker image is a snapshot of a container state at one particular timestamp. The
 ## Container lifecycle
 Containers can be created from an image, once an container has been created, it can be started, stopped, or removed. Similar to once a song has been written, it can be played, paused, topped or deleted.
 
-## How does docker work?
+<!-- ## How does docker work?
 TODO: Explain docker architecture
 
 ### Docker REST API
@@ -39,7 +39,7 @@ Docker use the REST API to interact with DockerHub
 
 ### Docker host
 
-### Docker Engine
+### Docker Engine -->
 
 ## Why adopt containerisation with Docker?
 Docker runs on all operating systems and allow all images to run on all OS as well. Docker excels at abstracting and encapsulating the information of the containers as a very lightweight product. It is particular useful for web applications running on a server or console-based software. Docker is also the biggest market participant, it is being used in over 50% of the companies globally. 
