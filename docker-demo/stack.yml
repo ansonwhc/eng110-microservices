@@ -1,0 +1,14 @@
+version: '3'
+
+services:
+  redis-server:
+    image: 'redis'
+    restart: always
+
+  node-app:
+    build: . 
+    restart: always
+    ports:
+      - "3000:3000"
+    links:
+      - redis-server
