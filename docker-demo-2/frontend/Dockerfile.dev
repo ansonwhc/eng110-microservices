@@ -1,0 +1,13 @@
+# This is a Dockerfile ONLY used in a dev environment
+
+FROM node:16-alpine
+
+WORKDIR '/app'
+
+COPY package.json .  
+RUN npm install
+
+# we can delete node_modules before copying - preventing 2 copies of dependencies
+COPY . .
+
+CMD ["npm", "run", "start"]

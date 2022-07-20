@@ -1,0 +1,23 @@
+# docker-compose for one container for dev purposes
+version: '3'
+services:
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    ports:
+      - "3000:3000"
+    volumes:
+      - /app/node_modules
+      - .:/app
+
+  tests:
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    volumes:
+      - /app/node_modules
+      - .:/app
+    # this overwrites the CMD in the Dockerfile.dev
+    # and specifies how to start this container
+    command: ["npm", "run", "test"]  

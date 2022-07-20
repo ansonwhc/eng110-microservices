@@ -20,7 +20,7 @@ Microservices guide - [here](#microservices)
     - Repository of container images with an array of content sources including container community developers, open source projects and independent software vendors (ISV) building and distributing their code in containers
 <!-- - Docker Compose
     -  -->
-
+npx create-react-app frontend
 ## Command cheat sheet
 Command | Function | Options
 --- | --- | ---
@@ -30,7 +30,7 @@ Command | Function | Options
 `docker start <id>` | start the running container
 `docker stop <id>` | stop the running container (if still running after 10s, docker will use `docker kill` automatically)
 `socker kill <id>` | kill the running container (similar to force stop)
-`docker run <image>` | create and run a container from an image | [-d] detach <br>[-p] port
+`docker run <image>` | create and run a container from an image | [-d] detach <br>[-p] port <br>[-v] volume
 `docker run -d -p 80:80 nginx` | create a container using a nginx image (docker official image) and run in the banckground on port 80
 `docker run -d -p 90:80 nginx` | port mapping - map from 80 to port 90
 `docker rm <id>` | remove the container | [-f] force remove
